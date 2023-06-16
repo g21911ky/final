@@ -81,7 +81,7 @@ filterButton.textContent = '優先度（高）で絞り込み';
 filterButton.id = 'priority';
 const main = document.querySelector('main');
 main.appendChild(filterButton);
-
+*/
 
 filterButton.addEventListener('click', () => {
   clearTable();
@@ -91,7 +91,6 @@ filterButton.addEventListener('click', () => {
     }
   }
 });
-*/
 
 const clearTable = () => {
   const trList = Array.from(document.getElementsByTagName('tr'));

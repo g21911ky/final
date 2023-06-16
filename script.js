@@ -100,6 +100,8 @@ const clearTable = () => {
 const remove = document.createElement('button');
 remove.textContent = '完了したTODOを削除する';
 remove.id = 'remove';
+const main = document.querySelector('main');
+main.appendChild(filterButton);
 const br = document.createElement('br');
 main.appendChild(br);
 main.appendChild(remove);

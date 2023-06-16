@@ -72,7 +72,7 @@ submit.addEventListener('click', () => {
   list.push(item);
   storage.todoList = JSON.stringify(list);
 });
-/*
+
 const filterButton = document.createElement('button');
 filterButton.textContent = '優先度（高）で絞り込み';
 filterButton.id = 'priority';
@@ -87,7 +87,6 @@ filterButton.addEventListener('click', () => {
     }
   }
 });
-*/
 
 const clearTable = () => {
   const trList = Array.from(document.getElementsByTagName('tr'));
@@ -100,8 +99,6 @@ const clearTable = () => {
 const remove = document.createElement('button');
 remove.textContent = '完了したTODOを削除する';
 remove.id = 'remove';
-const main = document.querySelector('main');
-main.appendChild(filterButton);
 const br = document.createElement('br');
 main.appendChild(br);
 main.appendChild(remove);

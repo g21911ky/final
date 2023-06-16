@@ -4,7 +4,6 @@ const storage = localStorage;
 
 const table = document.querySelector('table');
 const todo = document.getElementById('todo');
-const priority = document.querySelector('select');
 const deadline = document.querySelector('input[type="date"]');
 const submit = document.getElementById('submit');
 
@@ -57,7 +56,6 @@ submit.addEventListener('click', () => {
   } else {
     item.todo = 'ダミーTODO';
   }
-  item.priority = priority.value;
   if (deadline.value != '') {
     item.deadline = deadline.value;
   } else {
@@ -67,7 +65,6 @@ submit.addEventListener('click', () => {
   item.done = false;
 
   todo.value = '';
-  priority.value = '普';
   deadline.value = '';
 
   addItem(item);
@@ -81,7 +78,6 @@ filterButton.textContent = '優先度（高）で絞り込み';
 filterButton.id = 'priority';
 const main = document.querySelector('main');
 main.appendChild(filterButton);
-*/
 
 filterButton.addEventListener('click', () => {
   clearTable();
@@ -91,6 +87,7 @@ filterButton.addEventListener('click', () => {
     }
   }
 });
+*/
 
 const clearTable = () => {
   const trList = Array.from(document.getElementsByTagName('tr'));

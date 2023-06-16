@@ -72,10 +72,11 @@ submit.addEventListener('click', () => {
   list.push(item);
   storage.todoList = JSON.stringify(list);
 });
-
+/*
 const filterButton = document.createElement('button');
 filterButton.textContent = '優先度（高）で絞り込み';
 filterButton.id = 'priority';
+*/
 const main = document.querySelector('main');
 main.appendChild(filterButton);
 

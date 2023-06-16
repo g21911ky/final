@@ -1,4 +1,9 @@
 :root { font-size: 16px; }
+
+body {
+    background-image: url("tsuda.png");
+  }
+
 main {
   width: 480px;
   margin: 0 auto;

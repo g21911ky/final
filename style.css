@@ -4,10 +4,6 @@ body {
     background-image: url(tsuda.png);
   }
 
-.sample img {
-    width: 31%;
-    height: auto;
-}
 
 main {
   width: 480px;

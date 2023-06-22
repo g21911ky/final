@@ -2,10 +2,10 @@
 
 const storage = localStorage;
 
-const table = document.querySelector('table');
-const todo = document.getElementById('todo');
-const deadline = document.querySelector('input[type="date"]');
-const submit = document.getElementById('submit');
+const table = document.querySelector('table'); //表
+const todo = document.getElementById('todo'); //todo
+const deadline = document.querySelector('input[type="date"]'); //〆切
+const submit = document.getElementById('submit'); //登録ボタン
 
 let list = [];
 
@@ -21,23 +21,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const addItem = (item) => {
-  const tr = document.createElement('tr');
-
+  const tr = document.createElement('tr'); //tr要素を作成
+    //繰り返しはfor-in文
   for (const prop in item) {
-    const td = document.createElement('td');
-    if (prop == 'done') {
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.checked = item[prop];
-      td.appendChild(checkbox);
+    const td = document.createElement('td'); //td要素を生成
+    if (prop == 'done') { //完了欄の場合
+        //完了ちぇっぅボックスを追加
+      const checkbox = document.createElement('input'); //要素生成
+      checkbox.type = 'checkbox'; //tyoe属をcheckboxに
+      checkbox.checked = item[prop]; //check属性を設定
+      td.appendChild(checkbox); //td要素の子要素に
       checkbox.addEventListener('change', checkBoxListener);
     } else {
-      td.textContent = item[prop];
+      td.textContent = item[prop]; //ブラケット記法(その他の欄)
     }
-    tr.appendChild(td);
+    tr.appendChild(td); //生成したtd要素をtr要素に追加
   }
 
-  table.append(tr);
+  table.append(tr); //trエレメントをtable要素に追加
 };
 
 const checkBoxListener = (ev) => {
@@ -48,8 +49,9 @@ const checkBoxListener = (ev) => {
   storage.todoList = JSON.stringify(list);
 };
 
+//todo登録ボタン
 submit.addEventListener('click', () => {
-  const item = {};
+  const item = {}; //入力値を一時的に格納するオブジェクト
 
   if (todo.value != '') {
     item.todo = todo.value;
@@ -59,10 +61,10 @@ submit.addEventListener('click', () => {
   if (deadline.value != '') {
     item.deadline = deadline.value;
   } else {
-    const date = new Date();
-    item.deadline = date.toLocaleDateString().replace(/\//g, '-');
+    const date = new Date(); //本日の日付情報を取得
+    item.deadline = date.toLocaleDateString().replace(/\//g, '-'); //日本の体裁を変更
   }
-  item.done = false;
+  item.done = false;  //完了はひとまずboolean
 
   todo.value = '';
   deadline.value = '';
@@ -73,20 +75,22 @@ submit.addEventListener('click', () => {
   storage.todoList = JSON.stringify(list);
 });
 
-const filterButton = document.createElement('button');
-filterButton.textContent = '優先度（高）で絞り込み';
-filterButton.id = 'priority';
+const filterButton = document.createElement('button'); //ボタン要素を生成
+//filterButton.textContent = '優先度（高）で絞り込み';
+//filterButton.id = 'priority'; //cssでの装飾用
 
 const main = document.querySelector('main');
 main.appendChild(filterButton);
 
 filterButton.addEventListener('click', () => {
   clearTable();
+  /*
   for (const item of list) {
     if (item.priority == '高') {
       addItem(item);
     }
   }
+  */
 });
 
 const clearTable = () => {

@@ -3,14 +3,11 @@
 const storage = localStorage; // オブジェクト定数に入れて分かりやすく
 
 const table = document.querySelector("#to"); //表DO
-const table2 = document.querySelector("#doing"); //表DOING
-const table3 = document.querySelector("#done"); //表DONE
 const todo = document.getElementById('todo'); //todo登録
 const deadline = document.querySelector('input[type="date"]'); //〆切
 const submit = document.getElementById('submit'); //登録ボタン
 
 let list = []; //データを入れる箱
-let list2=[];
 
 //ページが読み込まれた時に、
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,25 +40,7 @@ const addItem = (item) => {
     }
     table.append(tr); //trエレメントをtable要素に追加
 };
-const addItem3 = (item) => {
-  const tr = document.createElement('tr'); //tr要素を作成(行)
-    //繰り返しはfor-in文
-    for (const prop in item) {
-        const td = document.createElement('td'); //td要素を生成(要素)
-        if (prop == 'done') { //完了欄の場合
-            //完了チェックボックスを追加
-            const checkbox = document.createElement('input'); //要素生成
-            checkbox.type = 'checkbox'; //tyoe属をcheckboxに
-            checkbox.checked = item[prop]; //check属性を設定
-            td.appendChild(checkbox); //td要素の子要素に
-            checkbox.addEventListener('change', checkBoxListener);
-        } else {
-            td.textContent = item[prop]; //ブラケット記法(その他の欄)
-        }
-        tr.appendChild(td); //生成したtd要素をtr要素に追加
-    }
-    table3.append(tr); //trエレメントをtable要素に追加
-};
+
 
 const checkBoxListener = (ev) => {
   const trList = Array.from(document.getElementsByTagName('tr')); //テーブルの全tr要素のリストを取得
@@ -125,16 +104,10 @@ main.appendChild(remove);
 
 remove.addEventListener('click', () => {
   clearTable(); //tableを一旦削除
-  //list = list.filter((item) => item.done == false); //未完了のtoを抽出して定数listを置き換え
-  list = list.filter((item) => item.done == true); //完了のtoを抽出して定数list2を置き換え
+  list = list.filter((item) => item.done == false); //未完了のtoを抽出して定数listを置き換え
   for (const item of list) { //toデータをテーブルに追加
     addItem(item);
   }
-  /*
-  for (const item of list2) { //toデータをテーブルに追加
-    addItem3(item);
-  }
-  */
   storage.todoList = JSON.stringify(list); //ストレージデータを更新
 });
 
